@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "LineChart.h"
+#import "LineChartPoint.h"
 
 @interface ViewController ()
 
@@ -17,7 +19,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    LineChart *lc = [[LineChart alloc]initWithFrame:CGRectInset(self.view.bounds, 40, 150)];
+    NSMutableArray *points = [NSMutableArray array];
+    for (int i = 0; i <= 100; i = i + 10) {
+        LineChartPoint *pt = [[LineChartPoint alloc]initWithPoint:CGPointMake(i, i)];
+        [points addObject:pt];
+    }
+    lc.lineChartPoints = points;
+    [self.view addSubview:lc];
 }
 
 - (void)didReceiveMemoryWarning

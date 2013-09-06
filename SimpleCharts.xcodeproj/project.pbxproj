@@ -18,6 +18,8 @@
 		43480E0017D9B6830000E8CD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43480DFF17D9B6830000E8CD /* Default-568h@2x.png */; };
 		43480E0317D9B6830000E8CD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43480E0217D9B6830000E8CD /* ViewController.m */; };
 		43480E0617D9B6840000E8CD /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43480E0417D9B6840000E8CD /* ViewController.xib */; };
+		43480E1217D9D6F20000E8CD /* LineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 43480E1117D9D6F20000E8CD /* LineChart.m */; };
+		43480E1517D9D7350000E8CD /* LineChartPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 43480E1417D9D7350000E8CD /* LineChartPoint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,10 @@
 		43480E0117D9B6830000E8CD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		43480E0217D9B6830000E8CD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		43480E0517D9B6840000E8CD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		43480E1017D9D6F20000E8CD /* LineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChart.h; sourceTree = "<group>"; };
+		43480E1117D9D6F20000E8CD /* LineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChart.m; sourceTree = "<group>"; };
+		43480E1317D9D7350000E8CD /* LineChartPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartPoint.h; sourceTree = "<group>"; };
+		43480E1417D9D7350000E8CD /* LineChartPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartPoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,7 @@
 		43480DEF17D9B6830000E8CD /* SimpleCharts */ = {
 			isa = PBXGroup;
 			children = (
+				43480E0F17D9D6F20000E8CD /* LineChart */,
 				43480DF817D9B6830000E8CD /* AppDelegate.h */,
 				43480DF917D9B6830000E8CD /* AppDelegate.m */,
 				43480E0117D9B6830000E8CD /* ViewController.h */,
@@ -105,6 +112,17 @@
 				43480DFF17D9B6830000E8CD /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		43480E0F17D9D6F20000E8CD /* LineChart */ = {
+			isa = PBXGroup;
+			children = (
+				43480E1017D9D6F20000E8CD /* LineChart.h */,
+				43480E1117D9D6F20000E8CD /* LineChart.m */,
+				43480E1317D9D7350000E8CD /* LineChartPoint.h */,
+				43480E1417D9D7350000E8CD /* LineChartPoint.m */,
+			);
+			path = LineChart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +194,8 @@
 				43480DF617D9B6830000E8CD /* main.m in Sources */,
 				43480DFA17D9B6830000E8CD /* AppDelegate.m in Sources */,
 				43480E0317D9B6830000E8CD /* ViewController.m in Sources */,
+				43480E1217D9D6F20000E8CD /* LineChart.m in Sources */,
+				43480E1517D9D7350000E8CD /* LineChartPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
