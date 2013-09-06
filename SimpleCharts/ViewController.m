@@ -22,10 +22,22 @@
     
     LineChart *lc = [[LineChart alloc]initWithFrame:CGRectInset(self.view.bounds, 40, 150)];
     NSMutableArray *points = [NSMutableArray array];
-    for (int i = 0; i <= 100; i = i + 10) {
-        LineChartPoint *pt = [[LineChartPoint alloc]initWithPoint:CGPointMake(i, i)];
-        [points addObject:pt];
-    }
+    
+    LineChartPoint *pt0 = [[LineChartPoint alloc]initWithPoint:CGPointMake(0, 5)];
+    [points addObject:pt0];
+    
+    LineChartPoint *pt = [[LineChartPoint alloc]initWithPoint:CGPointMake(10, 60)];
+    [points addObject:pt];
+    
+    LineChartPoint *pt1 = [[LineChartPoint alloc]initWithPoint:CGPointMake(20, 20)];
+    [points addObject:pt1];
+    
+    LineChartPoint *pt2 = [[LineChartPoint alloc]initWithPoint:CGPointMake(30, 120)];
+    [points addObject:pt2];
+    
+    LineChartPoint *pt3 = [[LineChartPoint alloc]initWithPoint:CGPointMake(40, 50)];
+    [points addObject:pt3];
+    
     lc.lineChartPoints = points;
     [self.view addSubview:lc];
 }
