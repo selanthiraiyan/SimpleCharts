@@ -12,5 +12,7 @@
 @interface ViewController : UIViewController
 
 @property (strong) IBOutlet LineChart *lc;
+@property (strong) IBOutlet LineChart *lc1;
+@property (strong) IBOutlet LineChart *lc2;
 
 @end

@@ -50,18 +50,16 @@
     //Plotting the points
     CGContextSaveGState(context);
     CGContextSetLineCap(context, kCGLineCapSquare);
-    CGContextSetStrokeColorWithColor(context, [UIColor yellowColor].CGColor);
     CGContextSetLineWidth(context, 1.0);
     for (int i = 0; i < [self.lineChartPoints count]; i++) {
         LineChartPoint *pt = [self.lineChartPoints objectAtIndex:i];
-        
+
         CGPoint pointToDraw = CGPointMake([self getRelativeX:pt.position.x], [self getRelativeY:pt.position.y]);
-        NSString *xAxisText = [NSString stringWithFormat:@"%.f", pt.position.x];
-        NSString *yAxisText = [NSString stringWithFormat:@"%.f", pt.position.y];
-        UIFont *font = [UIFont fontWithName:@"Helvetica" size:10];
         
-        [xAxisText drawAtPoint:CGPointMake(pointToDraw.x, CGRectGetMaxY([self getActualRectToDrawChart])) withFont:font];
-        [yAxisText drawAtPoint:CGPointMake(CGRectGetMinX([self getActualRectToDrawChart]), pointToDraw.y) withFont:font];
+        [pt.xAxisText drawAtPoint:CGPointMake(pointToDraw.x, CGRectGetMaxY([self getActualRectToDrawChart])) withFont:pt.xAxisFont];
+
+        [pt.yAxisText drawInRect:CGRectMake(self.bounds.origin.x, pointToDraw.y, PADDING_TO_DRAW_Y_AXIS_TEXT, 10) withFont:pt.yAxisFont lineBreakMode:NSLineBreakByTruncatingTail alignment:NSTextAlignmentCenter];
+
         if (i == 0) {
             CGContextMoveToPoint(context, pointToDraw.x, pointToDraw.y);
         }
@@ -69,7 +67,8 @@
             CGContextAddLineToPoint(context, pointToDraw.x, pointToDraw.y);
         }
     }
-    
+    CGContextSetStrokeColorWithColor(context, [UIColor yellowColor].CGColor);
+
     CGContextStrokePath(context);
     CGContextRestoreGState(context);
     

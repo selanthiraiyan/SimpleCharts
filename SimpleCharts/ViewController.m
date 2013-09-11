@@ -15,7 +15,6 @@
 @end
 
 @implementation ViewController
-@synthesize lc;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -40,8 +39,14 @@
     LineChartPoint *pt4 = [[LineChartPoint alloc]initWithPoint:CGPointMake(50, 0)];
     [points addObject:pt4];
     
-    lc.lineChartPoints = points;
+    self.lc.lineChartPoints = points;
     [self.lc reloadData];
+    
+    self.lc1.lineChartPoints = points;
+    [self.lc1 reloadData];
+    
+    self.lc2.lineChartPoints = points;
+    [self.lc2 reloadData];
 }
 
 
