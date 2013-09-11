@@ -26,17 +26,20 @@
     LineChartPoint *pt0 = [[LineChartPoint alloc]initWithPoint:CGPointMake(0, 0)];
     [points addObject:pt0];
     
-    LineChartPoint *pt = [[LineChartPoint alloc]initWithPoint:CGPointMake(10, 10)];
+    LineChartPoint *pt = [[LineChartPoint alloc]initWithPoint:CGPointMake(10, 35)];
     [points addObject:pt];
     
-    LineChartPoint *pt1 = [[LineChartPoint alloc]initWithPoint:CGPointMake(20, 20)];
+    LineChartPoint *pt1 = [[LineChartPoint alloc]initWithPoint:CGPointMake(20, 10)];
     [points addObject:pt1];
     
-    LineChartPoint *pt2 = [[LineChartPoint alloc]initWithPoint:CGPointMake(30, 30)];
+    LineChartPoint *pt2 = [[LineChartPoint alloc]initWithPoint:CGPointMake(30, 75)];
     [points addObject:pt2];
     
-    LineChartPoint *pt3 = [[LineChartPoint alloc]initWithPoint:CGPointMake(40, 40)];
+    LineChartPoint *pt3 = [[LineChartPoint alloc]initWithPoint:CGPointMake(40, 20)];
     [points addObject:pt3];
+    
+    LineChartPoint *pt4 = [[LineChartPoint alloc]initWithPoint:CGPointMake(50, 0)];
+    [points addObject:pt4];
     
     lc.lineChartPoints = points;
     [self.view addSubview:lc];
