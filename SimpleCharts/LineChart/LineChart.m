@@ -13,11 +13,20 @@
 
 @implementation LineChart
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
+
     }
     return self;
 }
@@ -47,19 +56,18 @@
         LineChartPoint *pt = [self.lineChartPoints objectAtIndex:i];
         
         CGPoint pointToDraw = CGPointMake([self getRelativeX:pt.position.x], [self getRelativeY:pt.position.y]);
-        NSString *xAxisText = [NSString stringWithFormat:@"%f", pointToDraw.x];
-        NSString *yAxisText = [NSString stringWithFormat:@"%f", pointToDraw.y];
+        NSString *xAxisText = [NSString stringWithFormat:@"%.f", pt.position.x];
+        NSString *yAxisText = [NSString stringWithFormat:@"%.f", pt.position.y];
+        UIFont *font = [UIFont fontWithName:@"Helvetica" size:10];
         
-        //        [xAxisText drawAtPoint:CGPointMake(pointToDraw.x, self.bounds.size.height - PADDING_TO_DRAW_X_AXIS_TEXT) withFont:[UIFont fontWithName:@"Helvetica" size:10]];
-        //        [yAxisText drawAtPoint:CGPointMake(self.bounds.size.width - PADDING_TO_DRAW_Y_AXIS_TEXT, pointToDraw.y) withFont:[UIFont fontWithName:@"Helvetica" size:10]];
+        [xAxisText drawAtPoint:CGPointMake(pointToDraw.x, CGRectGetMaxY([self getActualRectToDrawChart])) withFont:font];
+        [yAxisText drawAtPoint:CGPointMake(CGRectGetMinX([self getActualRectToDrawChart]), pointToDraw.y) withFont:font];
         if (i == 0) {
             CGContextMoveToPoint(context, pointToDraw.x, pointToDraw.y);
         }
         else {
             CGContextAddLineToPoint(context, pointToDraw.x, pointToDraw.y);
         }
-        
-        NSLog(@"plotted %@ for point %@", NSStringFromCGPoint(pointToDraw), NSStringFromCGPoint(pt.position));
     }
     
     CGContextStrokePath(context);
@@ -139,7 +147,8 @@ void draw1PxStroke(CGContextRef context, CGPoint startPoint, CGPoint endPoint, C
 
 - (CGRect)getActualRectToDrawChart
 {
-    return CGRectMake(PADDING_TO_DRAW_X_AXIS_TEXT, PADDING_TO_DRAW_Y_AXIS_TEXT, (self.bounds.size.height -  2 * PADDING_TO_DRAW_X_AXIS_TEXT), (self.bounds.size.width - 2 * PADDING_TO_DRAW_X_AXIS_TEXT));
+    CGRect rect = CGRectMake(PADDING_TO_DRAW_Y_AXIS_TEXT, PADDING_TO_DRAW_X_AXIS_TEXT, (self.bounds.size.width -  2 * PADDING_TO_DRAW_Y_AXIS_TEXT), (self.bounds.size.height - 2 * PADDING_TO_DRAW_X_AXIS_TEXT));
+    return rect;
 }
 
 - (int)getNumberOfPointsToPlotInXAxis

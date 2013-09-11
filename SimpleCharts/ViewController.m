@@ -7,20 +7,19 @@
 //
 
 #import "ViewController.h"
-#import "LineChart.h"
 #import "LineChartPoint.h"
 
 @interface ViewController ()
 
+
 @end
 
 @implementation ViewController
-
+@synthesize lc;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    LineChart *lc = [[LineChart alloc]initWithFrame:CGRectInset(self.view.bounds, 40, 150)];
     NSMutableArray *points = [NSMutableArray array];
     
     LineChartPoint *pt0 = [[LineChartPoint alloc]initWithPoint:CGPointMake(0, 0)];
@@ -32,7 +31,7 @@
     LineChartPoint *pt1 = [[LineChartPoint alloc]initWithPoint:CGPointMake(20, 10)];
     [points addObject:pt1];
     
-    LineChartPoint *pt2 = [[LineChartPoint alloc]initWithPoint:CGPointMake(30, 75)];
+    LineChartPoint *pt2 = [[LineChartPoint alloc]initWithPoint:CGPointMake(30, 70)];
     [points addObject:pt2];
     
     LineChartPoint *pt3 = [[LineChartPoint alloc]initWithPoint:CGPointMake(40, 20)];
@@ -42,8 +41,10 @@
     [points addObject:pt4];
     
     lc.lineChartPoints = points;
-    [self.view addSubview:lc];
+    [self.lc reloadData];
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {

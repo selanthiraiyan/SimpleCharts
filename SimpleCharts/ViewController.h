@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LineChart.h"
 
 @interface ViewController : UIViewController
+
+@property (strong) IBOutlet LineChart *lc;
 
 @end
