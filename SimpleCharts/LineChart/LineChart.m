@@ -28,14 +28,7 @@
 }
 
 - (void)drawRect:(CGRect)rect
-{
-    CGFloat minY = [self getMinY];
-    CGFloat maxY = [self getMaxY];
-    
-    
-    NSLog(@"min and max are %f %f", minY, maxY);
-    
-    
+{    
     //Drawing Y Axis
     CGContextRef context = UIGraphicsGetCurrentContext();
     draw1PxStroke(context, CGPointMake(PADDING_TO_DRAW_Y_AXIS_TEXT, 0), CGPointMake(PADDING_TO_DRAW_Y_AXIS_TEXT, self.bounds.size.height - PADDING_TO_DRAW_X_AXIS_TEXT), [UIColor blackColor].CGColor);
@@ -96,8 +89,9 @@ void draw1PxStroke(CGContextRef context, CGPoint startPoint, CGPoint endPoint, C
 
 - (CGFloat)getRelativeY:(CGFloat)actualY
 {
-    return (actualY / [self getMaxY]) * [self getActualRectToDrawChart].size.height;
+    return [self getActualRectToDrawChart].size.height - ((actualY / [self getMaxY]) * [self getActualRectToDrawChart].size.height);
 }
+
 - (CGFloat)getMinY
 {
     CGFloat min = 0;
