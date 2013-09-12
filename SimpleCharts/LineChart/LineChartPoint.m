@@ -7,9 +7,8 @@
 //
 
 #import "LineChartPoint.h"
-
+#import "LineChartPoint_Private.h"
 @interface LineChartPoint ()
-
 
 
 @end

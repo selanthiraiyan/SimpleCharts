@@ -23,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4347ED5E17E1980500C410F7 /* LineChartPoint_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineChartPoint_Private.h; sourceTree = "<group>"; };
 		43480DE617D9B6830000E8CD /* SimpleCharts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleCharts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43480DE917D9B6830000E8CD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		43480DEB17D9B6830000E8CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -121,6 +122,7 @@
 				43480E1117D9D6F20000E8CD /* LineChart.m */,
 				43480E1317D9D7350000E8CD /* LineChartPoint.h */,
 				43480E1417D9D7350000E8CD /* LineChartPoint.m */,
+				4347ED5E17E1980500C410F7 /* LineChartPoint_Private.h */,
 			);
 			path = LineChart;
 			sourceTree = "<group>";
@@ -318,6 +320,7 @@
 				43480E0B17D9B6840000E8CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

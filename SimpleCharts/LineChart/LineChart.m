@@ -10,6 +10,7 @@
 #define PADDING_TO_DRAW_Y_AXIS_TEXT self.bounds.size.width * .1
 
 #import "LineChart.h"
+#import "LineChartPoint_Private.h"
 
 @implementation LineChart
 
@@ -46,6 +47,22 @@
     //Drawing X Axis
     draw1PxStroke(context, CGPointMake(CGRectGetMinX([self getActualRectToDrawChart]), CGRectGetMaxY([self getActualRectToDrawChart])), CGPointMake(CGRectGetMaxX([self getActualRectToDrawChart]), CGRectGetMaxY([self getActualRectToDrawChart])), [UIColor blackColor].CGColor);
     
+    UIFont *font = [UIFont fontWithName:@"Helvetica" size:10];
+
+    for (float i = [self getMinY]; i < [self getMaxY]; i = i + ([self getMaxY] - [self getMinY]) / 5) {
+
+
+        draw1PxStroke(context, CGPointMake(CGRectGetMinX([self getActualRectToDrawChart]), [self getRelativeY:i]), CGPointMake(CGRectGetMaxX([self getActualRectToDrawChart]), [self getRelativeY:i]), [UIColor grayColor].CGColor);
+        
+        NSString *yAxisText = [NSString stringWithFormat:@"%.f", i];
+        [yAxisText drawInRect:CGRectMake(self.bounds.origin.x, [self getRelativeY:i], PADDING_TO_DRAW_Y_AXIS_TEXT, 10) withFont:font lineBreakMode:NSLineBreakByTruncatingTail alignment:NSTextAlignmentCenter];
+
+    }
+    
+    for (int i = 0; i < [self.lineChartPoints count]; i++) {
+        LineChartPoint *pt = [self.lineChartPoints objectAtIndex:i];
+        draw1PxStroke(context, CGPointMake([self getRelativeX:pt.position.x], CGRectGetMinY([self getActualRectToDrawChart])), CGPointMake([self getRelativeX:pt.position.x], CGRectGetMaxY([self getActualRectToDrawChart])), [UIColor grayColor].CGColor);
+    }
     
     //Plotting the points
     CGContextSaveGState(context);
@@ -53,12 +70,8 @@
     CGContextSetLineWidth(context, 1.0);
     for (int i = 0; i < [self.lineChartPoints count]; i++) {
         LineChartPoint *pt = [self.lineChartPoints objectAtIndex:i];
-
         CGPoint pointToDraw = CGPointMake([self getRelativeX:pt.position.x], [self getRelativeY:pt.position.y]);
-        
-        [pt.xAxisText drawAtPoint:CGPointMake(pointToDraw.x, CGRectGetMaxY([self getActualRectToDrawChart])) withFont:pt.xAxisFont];
-
-        [pt.yAxisText drawInRect:CGRectMake(self.bounds.origin.x, pointToDraw.y, PADDING_TO_DRAW_Y_AXIS_TEXT, 10) withFont:pt.yAxisFont lineBreakMode:NSLineBreakByTruncatingTail alignment:NSTextAlignmentCenter];
+        [pt.xAxisText drawAtPoint:CGPointMake(pointToDraw.x, CGRectGetMaxY([self getActualRectToDrawChart])) withFont:font];
 
         if (i == 0) {
             CGContextMoveToPoint(context, pointToDraw.x, pointToDraw.y);

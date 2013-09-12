@@ -16,9 +16,6 @@
 
 @property NSString *xAxisText;
 @property NSString *yAxisText;
-@property UIFont *xAxisFont;
-@property UIColor *xAxisFontColor;
-@property UIFont *yAxisFont;
-@property UIColor *yAxisFontColor;
+
 
 @end
